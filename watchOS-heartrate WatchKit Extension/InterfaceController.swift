@@ -9,14 +9,15 @@
 import WatchKit
 import Foundation
 import HealthKit
-
+import FirebaseStorage
 
 class InterfaceController: WKInterfaceController {
 
     @IBOutlet weak var label: WKInterfaceLabel!
+    @IBOutlet var imageView: WKInterfaceImage!
     @IBOutlet weak var button: WKInterfaceButton!
 
-    let fontSize = UIFont.systemFont(ofSize: 80)
+    let fontSize = UIFont.systemFont(ofSize: 50)
 
     let healthStore = HKHealthStore()
     let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
@@ -50,6 +51,11 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         print(#function)
+//        let storage = Storage.storage()
+//        let storageRef = storage.reference(forURL: "gs://heart-rate-68931.appspot.com/").child("sparky.png")
+//        storageRef.getData(maxSize: 1024 * 1024) { data, error  in
+//            self.imageView.setImageData(data)
+//        }
     }
 
     override func didDeactivate() {
@@ -97,6 +103,48 @@ extension InterfaceController {
         guard let samples = samples as? [HKQuantitySample] else { return }
         guard let quantity = samples.last?.quantity else { return }
         print(quantity)
+        print(Int(quantity.doubleValue(for: heartRateUnit)))
+        
+        var jsonDict: Dictionary<String, Any>?
+        var jsonStr: String?
+        var heartRate: Array<Int>?
+        
+        let storage = Storage.storage()
+        let storageRef = storage.reference(forURL: "gs://heart-rate-68931.appspot.com").child("data/heartRate.json")
+        storageRef.getData(maxSize: 1024 * 1024) { data, error in
+        
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+                jsonDict = json as! Dictionary<String, Any>
+               
+                heartRate = jsonDict?["heartRate"] as! Array<Int>
+                
+                heartRate?.append(Int(quantity.doubleValue(for: self.heartRateUnit)))
+                jsonDict?.updateValue(heartRate, forKey: "heartRate")
+
+                jsonStr = """
+                    {
+                        "heartRate": \(heartRate! as Array<Int>)
+                    }
+                """
+                
+                let storageRef2 = storage.reference(forURL: "gs://heart-rate-68931.appspot.com").child("data/heartRate.json")
+
+                // Create file metadata including the content type
+                let metadata = StorageMetadata()
+                metadata.contentType = "application/json"
+                
+                let uploadTask = storageRef2.putData((jsonStr?.data(using: .utf8))!, metadata: metadata) { metadata, error in
+                    guard metadata != nil else {
+                    // Uh-oh, an error occurred!
+                    print(error)
+                    return
+                  }
+                }
+            } catch {
+                print(error)
+            }
+        }
 
         let text = String(quantity.doubleValue(for: self.heartRateUnit))
         let attrStr = NSAttributedString(string: text, attributes:[NSAttributedString.Key.font:self.fontSize])

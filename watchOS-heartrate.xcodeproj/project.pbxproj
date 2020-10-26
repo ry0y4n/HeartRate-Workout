@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C3403F8FDD3737E61D6BDB0 /* Pods_watchOS_heartrate_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8854A9BBE480E44E907D555C /* Pods_watchOS_heartrate_WatchKit_Extension.framework */; };
+		519D49FF25473B54005F813D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 519D49FE25473B54005F813D /* GoogleService-Info.plist */; };
+		519D4A0025473B54005F813D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 519D49FE25473B54005F813D /* GoogleService-Info.plist */; };
+		519D4A0125473B54005F813D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 519D49FE25473B54005F813D /* GoogleService-Info.plist */; };
 		E3782EE02465AA5A00F0D996 /* watchOS-heartrate WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E3782EDF2465AA5A00F0D996 /* watchOS-heartrate WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E3782EE62465AA5A00F0D996 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3782EE42465AA5A00F0D996 /* Interface.storyboard */; };
 		E3782EE82465AA5B00F0D996 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3782EE72465AA5B00F0D996 /* Assets.xcassets */; };
@@ -61,6 +65,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0AE8F120073A0421B1EEDD06 /* Pods-watchOS-heartrate WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchOS-heartrate WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-watchOS-heartrate WatchKit Extension/Pods-watchOS-heartrate WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		29EA075FFAA930E58A44DF25 /* Pods-watchOS-heartrate WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchOS-heartrate WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-watchOS-heartrate WatchKit Extension/Pods-watchOS-heartrate WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		519D49FE25473B54005F813D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8854A9BBE480E44E907D555C /* Pods_watchOS_heartrate_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchOS_heartrate_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3782EDB2465AA5A00F0D996 /* watchOS-heartrate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "watchOS-heartrate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3782EDF2465AA5A00F0D996 /* watchOS-heartrate WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "watchOS-heartrate WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3782EE52465AA5A00F0D996 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -78,17 +86,41 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7078E546DA7DDF6FC1168A2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D21A42FECD817B94B4073F43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E3782EEB2465AA5B00F0D996 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E3782F0D2465AD5900F0D996 /* HealthKit.framework in Frameworks */,
+				1C3403F8FDD3737E61D6BDB0 /* Pods_watchOS_heartrate_WatchKit_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AFDD7113C543EFDEA2C90465 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				29EA075FFAA930E58A44DF25 /* Pods-watchOS-heartrate WatchKit Extension.debug.xcconfig */,
+				0AE8F120073A0421B1EEDD06 /* Pods-watchOS-heartrate WatchKit Extension.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E3782ED42465AA5A00F0D996 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +128,7 @@
 				E3782EF22465AA5B00F0D996 /* watchOS-heartrate WatchKit Extension */,
 				E3782EDC2465AA5A00F0D996 /* Products */,
 				E3782F0B2465AD5900F0D996 /* Frameworks */,
+				AFDD7113C543EFDEA2C90465 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,6 +148,7 @@
 				E3782EE42465AA5A00F0D996 /* Interface.storyboard */,
 				E3782EE72465AA5B00F0D996 /* Assets.xcassets */,
 				E3782EE92465AA5B00F0D996 /* Info.plist */,
+				519D49FE25473B54005F813D /* GoogleService-Info.plist */,
 			);
 			path = "watchOS-heartrate WatchKit App";
 			sourceTree = "<group>";
@@ -137,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				E3782F0C2465AD5900F0D996 /* HealthKit.framework */,
+				8854A9BBE480E44E907D555C /* Pods_watchOS_heartrate_WatchKit_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -150,6 +185,7 @@
 			buildPhases = (
 				E3782ED92465AA5A00F0D996 /* Resources */,
 				E3782F062465AA5B00F0D996 /* Embed Watch Content */,
+				7078E546DA7DDF6FC1168A2B /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -167,6 +203,7 @@
 			buildPhases = (
 				E3782EDD2465AA5A00F0D996 /* Resources */,
 				E3782F022465AA5B00F0D996 /* Embed App Extensions */,
+				D21A42FECD817B94B4073F43 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,9 +219,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E3782EFF2465AA5B00F0D996 /* Build configuration list for PBXNativeTarget "watchOS-heartrate WatchKit Extension" */;
 			buildPhases = (
+				FBD856BF6627CF9388D7B776 /* [CP] Check Pods Manifest.lock */,
 				E3782EEA2465AA5B00F0D996 /* Sources */,
 				E3782EEB2465AA5B00F0D996 /* Frameworks */,
 				E3782EEC2465AA5B00F0D996 /* Resources */,
+				1C6A143CFA072CD0A851C2CB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -241,6 +280,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				519D49FF25473B54005F813D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +290,7 @@
 			files = (
 				E3782EE82465AA5B00F0D996 /* Assets.xcassets in Resources */,
 				E3782EE62465AA5A00F0D996 /* Interface.storyboard in Resources */,
+				519D4A0025473B54005F813D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,10 +299,53 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3782EFA2465AA5B00F0D996 /* Assets.xcassets in Resources */,
+				519D4A0125473B54005F813D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1C6A143CFA072CD0A851C2CB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-watchOS-heartrate WatchKit Extension/Pods-watchOS-heartrate WatchKit Extension-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-watchOS-heartrate WatchKit Extension/Pods-watchOS-heartrate WatchKit Extension-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-watchOS-heartrate WatchKit Extension/Pods-watchOS-heartrate WatchKit Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBD856BF6627CF9388D7B776 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-watchOS-heartrate WatchKit Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E3782EEA2465AA5B00F0D996 /* Sources */ = {
@@ -415,6 +499,7 @@
 		};
 		E3782F002465AA5B00F0D996 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29EA075FFAA930E58A44DF25 /* Pods-watchOS-heartrate WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "watchOS-heartrate WatchKit Extension/watchOS-heartrate WatchKit Extension.entitlements";
@@ -438,6 +523,7 @@
 		};
 		E3782F012465AA5B00F0D996 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AE8F120073A0421B1EEDD06 /* Pods-watchOS-heartrate WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "watchOS-heartrate WatchKit Extension/watchOS-heartrate WatchKit Extension.entitlements";

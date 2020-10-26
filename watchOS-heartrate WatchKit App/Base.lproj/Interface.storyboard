@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097.2" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17156" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17035"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -19,6 +20,7 @@
                                 </label>
                             </items>
                         </group>
+                        <imageView alignment="left" id="dGa-pd-faO"/>
                         <button width="1" alignment="center" verticalAlignment="bottom" title="計測開始" id="Lwm-0R-YSi">
                             <connections>
                                 <action selector="btnTapped" destination="AgC-eL-Hgc" id="1NR-Od-Y9w"/>
@@ -27,6 +29,7 @@
                     </items>
                     <connections>
                         <outlet property="button" destination="Lwm-0R-YSi" id="5id-6n-Iqs"/>
+                        <outlet property="imageView" destination="dGa-pd-faO" id="ehk-N3-wNN"/>
                         <outlet property="label" destination="9eo-dQ-TH9" id="KAS-Se-rc2"/>
                     </connections>
                 </controller>
