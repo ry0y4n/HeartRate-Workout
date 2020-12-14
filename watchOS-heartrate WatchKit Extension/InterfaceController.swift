@@ -11,6 +11,8 @@ import Foundation
 import HealthKit
 import FirebaseStorage
 
+var currentHapticType: WKHapticType = WKHapticType.directionUp
+
 class InterfaceController: WKInterfaceController {
 
     @IBOutlet weak var label: WKInterfaceLabel!
@@ -66,6 +68,7 @@ class InterfaceController: WKInterfaceController {
 
     @IBAction func btnTapped() {
         print(#function)
+        WKInterfaceDevice.current().play(currentHapticType)
         if self.workoutSession == nil {
             let config = HKWorkoutConfiguration()
             config.activityType = .other
@@ -102,6 +105,7 @@ extension InterfaceController {
         print(#function)
         guard let samples = samples as? [HKQuantitySample] else { return }
         guard let quantity = samples.last?.quantity else { return }
+        WKInterfaceDevice.current().play(currentHapticType)
         print(quantity)
         print(Int(quantity.doubleValue(for: heartRateUnit)))
         
@@ -123,10 +127,8 @@ extension InterfaceController {
                 jsonDict?.updateValue(heartRate, forKey: "heartRate")
 
                 jsonStr = """
-                    {
-                        "heartRate": \(heartRate! as Array<Int>)
-                    }
-                """
+{"heartRate": \(heartRate! as Array<Int>)}
+"""
                 
                 let storageRef2 = storage.reference(forURL: "gs://heart-rate-68931.appspot.com").child("data/heartRate.json")
 
@@ -191,7 +193,7 @@ extension InterfaceController: HKWorkoutSessionDelegate {
         print(#function)
         healthStore.stop(self.heartRateQuery!)
         heartRateQuery = nil
-        DispatchQueue.main.async {
+        DispatchQueue.main.async {   
             self.button.setTitle("計測開始")
             self.label.setText("")
         }
