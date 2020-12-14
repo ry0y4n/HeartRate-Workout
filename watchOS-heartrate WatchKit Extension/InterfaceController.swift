@@ -27,6 +27,13 @@ class InterfaceController: WKInterfaceController {
     var heartRateQuery: HKQuery?
 
     var workoutSession: HKWorkoutSession?
+    
+    var heartRate: Int = 60
+    var timeVal = 0.0
+        
+    @objc func playHaptic() -> Void {
+        WKInterfaceDevice.current().play(currentHapticType)
+    }
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -68,7 +75,15 @@ class InterfaceController: WKInterfaceController {
 
     @IBAction func btnTapped() {
         print(#function)
-        WKInterfaceDevice.current().play(currentHapticType)
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
+            self.timeVal += 0.1
+            let rate = 60.0 / Double(self.heartRate)
+            print(self.heartRate, rate, self.timeVal)
+            if self.timeVal >= rate {
+                self.timeVal = 0.0
+                self.playHaptic()
+            }
+        }
         if self.workoutSession == nil {
             let config = HKWorkoutConfiguration()
             config.activityType = .other
@@ -105,8 +120,8 @@ extension InterfaceController {
         print(#function)
         guard let samples = samples as? [HKQuantitySample] else { return }
         guard let quantity = samples.last?.quantity else { return }
-        WKInterfaceDevice.current().play(currentHapticType)
         print(quantity)
+        heartRate = Int(quantity.doubleValue(for: heartRateUnit))
         print(Int(quantity.doubleValue(for: heartRateUnit)))
         
         var jsonDict: Dictionary<String, Any>?
@@ -159,6 +174,7 @@ extension InterfaceController {
 extension InterfaceController: HKWorkoutSessionDelegate {
 
     func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
+        
         print(#function)
         switch toState {
         case .running:
